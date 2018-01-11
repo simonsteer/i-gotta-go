@@ -1,0 +1,24 @@
+@media (max-width: 850px) {
+  .layout {
+    grid-template-columns: 1.5fr 2fr;
+  }
+  .news-item {
+    width: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: 3rem 1fr 1fr;
+  }
+  .news-item {
+    width: 100%;
+  }
+  .currencies-tracked {
+    grid-row: 1 / 2;
+  }
+  .currency-info {
+    grid-row: 2 / 3;
+  }
+}

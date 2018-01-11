@@ -1,0 +1,30 @@
+header {
+  position: relative;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $color--border1;
+  grid-column: span 3;
+  height: 3rem;
+  z-index: 2;
+}
+
+.header__title {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: left;
+}
+
+.header__market-cap {
+  display: flex;
+  align-items: center;
+}
+
+.header__settings-button {
+  @include button;
+  width: 6.5rem;
+}

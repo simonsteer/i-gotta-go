@@ -1,0 +1,105 @@
+.settings {
+  width: 17rem;
+  background: $color--background;
+  border: 1px solid $color--search;
+  position: absolute;
+  right: 0.75rem;
+  top: 2.6rem;
+  button {
+    margin-top: 1rem;
+    width: 6.5rem;
+  }
+}
+
+.settings-list {
+  &>li {
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    &:not(.settings__currency) {
+      padding: 2rem 0;
+    }
+  }
+  span {
+    font-size: 0.8rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+}
+
+.settings__button {
+  @include button;
+}
+
+.settings__currency {
+  border-top: 1px solid $color--search;
+  border-bottom: 1px solid $color--search;
+  z-index: 2;
+  padding: 3rem 0;
+}
+
+.currency-list {
+  border-radius: 0.6675rem;
+  background: $color--background;
+  border: 1px solid $color--type;
+  width: 4rem;
+  padding: 0;
+  text-align: center;
+  position: absolute;
+  top: 2.5rem;
+  height: 1.35rem;
+  transition: height 0.3s, border-color 0.3s;
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    border-bottom: 0.2rem solid rgba(0,0,0,0);
+    border-left: 0.2rem solid rgba(0,0,0,0);
+    border-top: 0.35rem solid $color--type;
+    border-right: 0.2rem solid rgba(0,0,0,0);
+    top: 0.5rem;
+    right: 0.5rem;
+    transition: border-color 0.3s;
+  }
+  &.open {
+    &::after {
+      border-color: rgba(0,0,0,0)
+    }
+    height: calc(8*1.35rem);
+    color: $color--type;
+    border: 1px solid $color--type;
+    li {
+      opacity: 1;
+      border: 0;
+      padding: 0 0 0.2rem 0;
+      border-radius: 0;
+      &:hover {
+        background: $color--type;
+        color: $color--background;
+      }
+    }
+  }
+  .currency-list__item {
+    &:hover {
+      background: $color--background;
+      color: $color--type;
+    }
+  }
+}
+
+.currency-list__item {
+  cursor: pointer;
+  @include flex-center;
+  height: 1.35rem;
+  width: 100%;
+  transition: opacity 0.3s, padding 0.3s;
+  &:first-child {
+    padding: 0 0.55rem 0.2rem 0;
+  }
+  &:not(:first-child) {
+    opacity: 0;
+  }
+}
