@@ -17,14 +17,22 @@ const tracker = (event) => {
     canvas = document.querySelector('.graph'),
     list = document.querySelector('.graph__time-increment'),
     height = canvas.clientHeight - (list.clientHeight * 2),
+    offsetEl = document.querySelector('.currencies-tracked'),
 
     plotPoints = allStats.length - 1,
-    position = event.pageX - canvas.offsetWidth,
     increment = canvas.offsetWidth / plotPoints,
     scale = Math.max(...allStats) / height,
     markers = []
 
-  let i
+  let 
+    position,
+    i
+
+  if (window.innerWidth <= 650) {
+    position = event.pageX - canvas.offsetWidth / 2
+  } else {
+    position = event.pageX - offsetEl.offsetWidth - canvas.offsetWidth / 2
+  }
 
   for (i = 0; i <= plotPoints; i++) {
     markers[i] = increment * i

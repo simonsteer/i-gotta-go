@@ -44,12 +44,18 @@ export default class Settings extends React.Component {
     dbRef.set(stylesheet)
   }
 
-  showCurrencyList() { 
+  showCurrencyList() {
     this.setState({
       showCurrencyList: true
     })
   }
 
+  exitCurrencyList() {
+    this.setState({
+      showCurrencyList: false,
+    })
+  }
+  
   changeCurrency(cur) {
     if (cur === this.props.user.currency) return;
     const dbRef = firebase.database().ref(`users/${this.props.user.id}`)
@@ -70,13 +76,6 @@ export default class Settings extends React.Component {
     window.addEventListener('click', this.exitCurrencyList, true)
   }
 
-  exitCurrencyList() {
-    if (event.target !== document.querySelector('.currency-list__item')) {
-      this.setState({
-        showCurrencyList: false,
-      })
-    }
-  }
 
   render() {
     const index = this.state.currencies.indexOf(this.props.user.currency)

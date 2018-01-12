@@ -30,27 +30,3 @@ export default class NewsFeed extends React.Component {
     )
   }
 }
-
-
-
-
-nums = [1,2,7,9]
-
-function increase(arr) {
-  let newNums = []
-  let n = arr[arr.length - 1] + 1
-  if (n > 9) {
-    n = 0
-  }
-  newNums.unshift(n)
-  for (let i = arr.length - 1; i > 0; i = i - 1) {
-    if (arr[i] === 0) {
-      n = arr[i - 1] + 1
-      if (n > 9) n = 0
-    } else {
-      n = arr[i - 1]
-    }
-    newNums.unshift(n)
-  }
-  return newNums
-}

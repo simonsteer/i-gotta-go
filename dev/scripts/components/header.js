@@ -32,20 +32,29 @@ export default class Header extends React.Component {
   }
 
   settingsClickOut(e) {
+
+    if (e.target.className === 'header__settings-button') return
+
     const settings = document.querySelector('.settings')
     const header = document.querySelector('header')
+    
     if (settings === null) return
 
-    
     const
       startX = settings.offsetLeft,
       endX = settings.offsetLeft + settings.clientWidth,
       startY = settings.offsetTop,
       endY = settings.offsetTop + settings.clientHeight
     
-    const leave = e.clientX < startX || e.clientX > endX || e.clientY < startY || e.clientY > endY
-    
-    if (leave && e.target.className !== 'currency-list__item') this.toggleSettingsPanel()
+    const leave =
+      e.clientX < startX ||
+      e.clientX > endX ||
+      e.clientY < startY ||
+      e.clientY > endY
+
+    console.log(leave)
+
+    if (leave && e.target.className !== 'currency-list__item') this.toggleSettingsPanel()    
 
   }
 

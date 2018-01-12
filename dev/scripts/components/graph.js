@@ -108,13 +108,13 @@ export default class Graph extends React.Component {
         console.log(increments)
         break;
       case '3 months':
-        first = increments.slice(n + 1, increments.length)
-        second = increments.slice(0, n + 1)
+        first = increments.slice(n, increments.length)
+        second = increments.slice(0, n)
         increments = increments.slice(9)
         break;
       case '6 months':
-        first = increments.slice(n + 1, increments.length)
-        second = increments.slice(0, n + 1)
+        first = increments.slice(n, increments.length)
+        second = increments.slice(0, n)
         increments = increments.slice(6)
         break;
       case 'year':

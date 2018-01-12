@@ -19,7 +19,7 @@
     position: relative;
     width: 100%;
     &:not(.settings__currency) {
-      padding: 2rem 0;
+      padding: 2rem 0.5rem;
     }
   }
   span {
@@ -51,7 +51,7 @@
   position: absolute;
   top: 2.5rem;
   height: 1.35rem;
-  transition: height 0.3s, border-color 0.3s;
+  transition: height 0.3s, border-color 0.3s, border-radius 0.3s;
   overflow: hidden;
   &::after {
     content: '';
@@ -65,17 +65,19 @@
     transition: border-color 0.3s;
   }
   &.open {
+    border-radius: 0;
+    height: calc(8*2rem);
+    color: $color--type;
+    border: 1px solid $color--type;
     &::after {
       border-color: rgba(0,0,0,0)
     }
-    height: calc(8*1.35rem);
-    color: $color--type;
-    border: 1px solid $color--type;
-    li {
+    .currency-list__item {
       opacity: 1;
       border: 0;
-      padding: 0 0 0.2rem 0;
+      padding: 0.5rem 0;
       border-radius: 0;
+      height: 2rem;
       &:hover {
         background: $color--type;
         color: $color--background;
@@ -93,11 +95,12 @@
 .currency-list__item {
   cursor: pointer;
   @include flex-center;
-  height: 1.35rem;
+  height: 2rem;
   width: 100%;
-  transition: opacity 0.3s, padding 0.3s;
+  transition: opacity 0.3s, padding 0.3s, height 0.3s;
   &:first-child {
     padding: 0 0.55rem 0.2rem 0;
+    height: 1.35rem;
   }
   &:not(:first-child) {
     opacity: 0;
