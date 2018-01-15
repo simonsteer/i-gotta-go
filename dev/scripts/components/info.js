@@ -24,7 +24,8 @@ export default class Info extends React.Component {
       })
     } else if (window.innerWidth > 650 && this.state.isMobile) {
       this.setState({
-        isMobile: false
+        isMobile: false,
+        panel: 1
       })
     }
   }

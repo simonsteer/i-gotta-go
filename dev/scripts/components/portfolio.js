@@ -31,7 +31,8 @@ export default class Portfolio extends React.Component {
       const { watchlist, currency } = snapshot.val()
       if (watchlist === null || watchlist === undefined) {
         this.setState({
-          items: []
+          items: [],
+          portfolioTotal: 0
         })
         return
       }
@@ -53,7 +54,6 @@ export default class Portfolio extends React.Component {
         for (let crypto in watchlist) {
 
           const item = watchlist[crypto]
-
           const invested = item.invested
           const conversion = prices[item.ticker][currency]
 
@@ -69,10 +69,12 @@ export default class Portfolio extends React.Component {
             />
           )
         }
+        
         this.setState({
           portfolioTotal,
           items
         })
+
       })
     })
   }
@@ -87,7 +89,7 @@ export default class Portfolio extends React.Component {
           ?
             this.state.items.map(item => item)
           :
-            <p>You haven't added any cryptocurrencies to your watchlist! <Link to="/search">Add some from the search page</Link>.</p>
+            <p className="portfolio__empty-message">You haven't added any cryptocurrencies to your watchlist! <Link to="/search">Add some from the search page</Link>.</p>
           }
         </div>
       </div>

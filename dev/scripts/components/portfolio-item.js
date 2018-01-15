@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { connect } from 'react-redux'
 
 @connect(
@@ -17,6 +16,7 @@ export default class PortfolioItem extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleEnter = this.handleEnter.bind(this)
+    this.clickOut = this.clickOut.bind(this)
   }
 
   handleChange(e) {
@@ -31,11 +31,17 @@ export default class PortfolioItem extends React.Component {
     if (event.keyCode === 13 && document.activeElement === input) {
       const dbRef = firebase.database().ref(`users/${this.props.user.id}/watchlist/${this.props.id}`)
       dbRef.child('invested').set(this.state.value)
+      document.querySelector(`#${this.props.id}`).blur()
     }
   }
 
-  componentDidMount() {
+  clickOut(event) {
+    if (event.target.id === this.props.id) return
+    const dbRef = firebase.database().ref(`users/${this.props.user.id}/watchlist/${this.props.id}`)
+    dbRef.child('invested').set(this.state.value)
+  }
 
+  componentDidMount() {
     const dbRef = firebase.database().ref(`users/${this.props.user.id}/watchlist/${this.props.id}`)
     dbRef.on('value', (snapshot) => {
         if (snapshot.val() === null) return
@@ -44,10 +50,12 @@ export default class PortfolioItem extends React.Component {
     })
 
     window.addEventListener('keydown', this.handleEnter)
+    window.addEventListener('click', this.clickOut)
   }
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleEnter)
+    window.removeEventListener('click', this.clickOut)
   }
   
   render() {
@@ -58,10 +66,11 @@ export default class PortfolioItem extends React.Component {
       <div className="portfolio-item">
         <span>{this.props.user.currency} {total}</span>
         <input
-          id={this.props.id}
-          onChange={this.handleChange}
-          className="portfolio-item__input"
           type="text"
+          id={this.props.id}
+          className="portfolio-item__input"
+          onChange={this.handleChange}
+          disabled={this.state.disabled}
           placeholder={`${this.props.ticker} invested`}
           value={`${this.props.ticker}: ${this.state.value}`} />
       </div>

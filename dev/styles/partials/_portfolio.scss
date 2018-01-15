@@ -37,7 +37,13 @@
 }
 
 .portfolio-item__input {
-  @include button;
+  background: none;
+  color: $color--type;
+  border: 1px solid $color--type;
+  height: 1.35rem;
+  border-radius: 0.675rem;
+  font-size: 0.8rem;
+  padding-top: 0.1rem;
   &:focus {
     background: $color--type;
     color: $color--background;
@@ -47,4 +53,15 @@
   border: 1px solid $color--border1;
   text-align: center;
   margin-top: 1rem;
+}
+
+.portfolio__empty-message {
+  font-size: 1rem;
+  padding: 0 2rem;
+  margin: 3rem 0;
+  text-align: center;
+  a {
+    font-weight: 500;
+    color: $color--type;
+  }
 }
