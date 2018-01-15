@@ -1,17 +1,11 @@
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Login from './login'
 import Header from './header'
 import CurrenciesTracked from './currencies-tracked'
-import Search from './search'
-import NewsFeed from './news-feed'
-import Graph from './graph'
+import Info from './info'
 
 global.fetch = require('node-fetch')
 
@@ -33,11 +27,7 @@ export default class CryBaby extends React.Component {
         <div className="layout">
           <Header />
           <CurrenciesTracked />
-          <div className="currency-info">
-          <Route path="/search" component={Search} />
-          <Route exact path="/" component={Graph} />
-          <Route exact path="/" component={NewsFeed} />
-          </div>
+          <Info />
         </div>
         :
         <Login />

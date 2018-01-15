@@ -52,17 +52,20 @@ export default class Login extends React.Component {
             fb.child('watchlist').push(
               {
                 name: 'Bitcoin',
-                ticker: 'BTC'
+                ticker: 'BTC',
+                invested: 0
               })
             fb.child('watchlist').push(
               {
                 name: 'Etherium',
-                ticker: 'ETH'
+                ticker: 'ETH',
+                invested: 0
               })
             fb.child('watchlist').push(
               {
                 name: 'DigitalCash',
-                ticker: 'DASH'
+                ticker: 'DASH',
+                invested: 0
               })
           }
           // We then read get the user's information in firebase once

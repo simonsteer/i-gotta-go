@@ -34,7 +34,11 @@ class AddToListButton extends React.Component {
 
   addToWatchList() {
     const dbRef = firebase.database().ref(`users/${this.props.user.id}/watchlist`)
-    dbRef.push({ ticker: this.props.ticker, name: this.props.name })
+    dbRef.push({
+      ticker: this.props.ticker,
+      name: this.props.name,
+      invested: 0
+    })
   }
 
   render() {

@@ -52,8 +52,6 @@ export default class Header extends React.Component {
       e.clientY < startY ||
       e.clientY > endY
 
-    console.log(leave)
-
     if (leave && e.target.className !== 'currency-list__item') this.toggleSettingsPanel()    
 
   }

@@ -80,8 +80,10 @@ export default class CurrenciesTracked extends React.Component {
         {this.state.tiles.map(tile => {
           return tile
         })}
-        <Route path="/search" component={CloseSearchButton} />
-        <Route exact path="/" component={AddMoreButton} />
+        <li>
+          <Route path="/search" component={CloseSearchButton} />
+          <Route exact path="/" component={AddMoreButton} />
+        </li>
       </ul>
     )
   }

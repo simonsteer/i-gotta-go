@@ -1,0 +1,50 @@
+.portfolio {
+  height: 50%;
+  margin: 0 2rem 0 2rem;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 2rem;
+  }
+  h3 {
+    text-align: center;
+    margin: 2rem 0 0.2rem 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+}
+
+.portfolio-feed {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.portfolio-item {
+  text-align: center;
+  width: calc(100% / 3);
+  padding: 0 1.5rem;
+  margin: 2.5rem 0 0 0;
+  span {
+    font-size: 0.8rem;
+  }
+  &:last-of-type {
+    margin-bottom: 4.5rem;
+  }
+}
+
+.portfolio-item__input {
+  @include button;
+  &:focus {
+    background: $color--type;
+    color: $color--background;
+  }
+  width: 100%;
+  background: none;
+  border: 1px solid $color--border1;
+  text-align: center;
+  margin-top: 1rem;
+}

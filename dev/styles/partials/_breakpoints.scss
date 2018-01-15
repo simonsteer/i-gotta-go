@@ -5,6 +5,10 @@
   .news-item {
     width: 100%;
   }
+  .portfolio-item {
+    width: 50%;
+    padding: 0 1rem;
+  }
 }
 
 @media (max-width: 650px) {
@@ -17,6 +21,7 @@
   header {
     grid-row: 1 / 2;
   }
+
   .header__market-cap {
     display: none;
   }
@@ -40,7 +45,11 @@
   }
 
   .graph-container{
-    height: 100%;
+    height: calc(100% - 3rem);
+  }
+
+  .graph {
+    border-bottom: 0;
   }
 
   .graph__time-options {
@@ -49,7 +58,19 @@
 
   .news-feed {
     height: 100%;
-    display: none;
+  }
+
+  .portfolio-feed {
+    height: 100%;
+  }
+
+  .portfolio {
+    height: 100%;
+  }
+
+  .portfolio-item {
+    width: calc(100% / 3);
+    padding: 0 0.5rem;
   }
 
   .search-module {
@@ -65,5 +86,10 @@
     height: 50vh;
     min-height: 100px;
   }
+}
 
+@media (max-width: 500px) {
+  .portfolio-item {
+    width: 50%;
+  }
 }
