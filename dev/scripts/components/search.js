@@ -10,7 +10,8 @@ import { getCoinlistData } from '../actions/get-coinlist-data'
   return {
     user: store.user,
     coinlist: store.coinlist,
-    coinlistdata: store.coinlistdata
+    coinlistdata: store.coinlistdata,
+    scrollbar: store.scrollbar
   }
 })
 export default class Search extends React.Component {
@@ -143,7 +144,7 @@ export default class Search extends React.Component {
         ?
           <Loading />
         :
-          <div className="search-module" onScroll={this.pageLoader}>
+          <div className="search-module" onScroll={this.pageLoader} style={{ marginRight: `-${this.props.scrollbar.width}px` }}>
             <input
               className="search-module__input"
               type="text"

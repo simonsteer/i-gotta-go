@@ -9,7 +9,8 @@ const cc = require('cryptocompare')
 @connect(
   (store => {
     return {
-      user: store.user
+      user: store.user,
+      scrollbar: store.scrollbar
     }
   })
 )
@@ -69,7 +70,7 @@ export default class Portfolio extends React.Component {
             />
           )
         }
-        
+
         this.setState({
           portfolioTotal,
           items
@@ -81,7 +82,7 @@ export default class Portfolio extends React.Component {
 
   render() {
     return (
-      <div className="portfolio">
+      <div className="portfolio" style={{ marginRight: `-${this.props.scrollbar.width}px` }}>
         <h3>Total Portfolio Value</h3>
         <h2>{this.props.user.currency} {this.state.portfolioTotal.toFixed(2)}</h2>
         <div className="portfolio-feed">
@@ -89,7 +90,8 @@ export default class Portfolio extends React.Component {
           ?
             this.state.items.map(item => item)
           :
-            <p className="portfolio__empty-message">You haven't added any cryptocurrencies to your watchlist! <Link to="/search">Add some from the search page</Link>.</p>
+            <p className="portfolio__empty-message">You don't have any currencies in your watchlist!<br />
+            <Link to="/search">Add some from the search page</Link>.</p>
           }
         </div>
       </div>

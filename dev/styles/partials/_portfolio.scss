@@ -1,10 +1,10 @@
 .portfolio {
   height: 50%;
-  margin: 0 2rem 0 2rem;
-  overflow: scroll;
+  padding: 0 2rem 0 2rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
   h2 {
     text-align: center;
     margin: 0;
@@ -28,6 +28,7 @@
   width: calc(100% / 3);
   padding: 0 1.5rem;
   margin: 2.5rem 0 0 0;
+  font-weight: 500;
   span {
     font-size: 0.8rem;
   }
@@ -47,6 +48,7 @@
   &:focus {
     background: $color--type;
     color: $color--background;
+    border-color: $color--type;
   }
   width: 100%;
   background: none;
@@ -57,8 +59,9 @@
 
 .portfolio__empty-message {
   font-size: 1rem;
-  padding: 0 2rem;
+  padding: 0;
   margin: 3rem 0;
+  width: 100%;
   text-align: center;
   a {
     font-weight: 500;

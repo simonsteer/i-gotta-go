@@ -41,7 +41,7 @@
 .search-module__currencies-list {
   height: calc(100vh - 3rem);
   min-height: 700px;
-  overflow: scroll;
+  overflow-y: scroll;
   flex-flow: row wrap;
   .currency-tile {
     &:hover {

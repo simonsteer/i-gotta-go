@@ -15,6 +15,10 @@
   }
 }
 
+.active-tile {
+    background: $color--background-hover;
+}
+
 .currency-tile--currency {
   font-size: 2rem;
   margin: 0;
@@ -31,11 +35,14 @@
   }
 }
 
+.currencies-tracked__container {
+  overflow-x: hidden;
+}
+
 .currencies-tracked {
-  border-right: 1px solid $color--border1;
   height: calc(100vh - 3rem);
-  min-height: 700px;
-  overflow: scroll;
+  min-height: 600px;
+  overflow-y: scroll;
   a {
     @include button;
     @include flex-center;
@@ -67,8 +74,11 @@
 
 .currency-info {
   height: calc(100vh - 3rem);
-  min-height: 700px;
+  min-height: 600px;
   position: relative;
+  border-left: 1px solid $color--border1;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .panel-selector {

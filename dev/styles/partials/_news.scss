@@ -1,6 +1,6 @@
 .news-feed {
   height: 50%;
-  margin: 0 2rem 0 2rem;
+  padding: 0 2rem 0 2rem;
   padding-bottom: 2rem;
   overflow: scroll;
   display: flex;
@@ -27,6 +27,7 @@
 
 .news-item__link {
   text-decoration: none;
+  font-size: 0.8rem;
   color: $color--type;
   &:hover {
     text-decoration: underline;

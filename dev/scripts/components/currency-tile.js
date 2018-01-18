@@ -18,7 +18,7 @@ const cc = require('cryptocompare')
   }
 })
 export default class CurrencyTile extends React.Component {
-  
+
   getCryptoHistory(e) {
 
     if (window.location.pathname !== '/search' && e.target.className !== 'currencies-tracked__remove-button') {

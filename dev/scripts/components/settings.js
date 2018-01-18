@@ -86,22 +86,24 @@ export default class Settings extends React.Component {
       <div className="settings">
         <ul className="settings-list">
           <li className="settings__theme">
-            <span>Interface Color</span>
-            <button
-              className="settings__button"
-              onClick={() => this.changeTheme('black')}
-            >
-              Black
+            <div>Interface Color</div>
+            <div>
+              <button
+                className="settings__button"
+                onClick={() => this.changeTheme('black')}
+              >
+                Black
             </button>
-            <button
-              className="settings__button"
-              onClick={() => this.changeTheme('white')}
-            >
-              White
+              <button
+                className="settings__button"
+                onClick={() => this.changeTheme('white')}
+              >
+                White
             </button>
+            </div>
           </li>
           <li className="settings__currency">
-            <span>Native Currency</span>
+            <div>Currency</div>
             <ul
               className={this.state.showCurrencyList ? "currency-list open" : "currency-list" }
               onClick={this.showCurrencyList}
@@ -111,13 +113,16 @@ export default class Settings extends React.Component {
               })}
             </ul>
           </li>
-          <li>
+          <li className="settings__logout">
             <button
               className="settings__button"
               onClick={this.logout}
             >
               Logout
             </button>
+            <span>Donate BTC: 3CERXT7P2SfGLnAZQP7Z4rXCzYAfNtRNgd</span>
+            <span>Donate ETH: 0x3cdfcb1cfe97b79f1cc6f83789837789c8ccd1b5</span>
+            <span>Donate LTC: LcBYSHqDj6XsQgGeEM1fUJfv2CPYgjvtwG</span>
           </li>
         </ul>
       </div>

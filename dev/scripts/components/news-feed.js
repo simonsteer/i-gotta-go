@@ -6,7 +6,8 @@ import { getNews } from '../actions/get-news'
 @connect(
   (store => {
     return {
-      news: store.news
+      news: store.news,
+      scrollbar: store.scrollbar
     }
   })
 )
@@ -18,9 +19,9 @@ export default class NewsFeed extends React.Component {
 
   render() {
     return (
-      <div className="news-feed">
+      <div className="news-feed" style={{ marginRight: `-${this.props.scrollbar.width}px` }}>
         {this.props.news.list.map((article, i) => {
-          return <div className="news-item" key={`${article.title}${i}`}>
+          return <div className="news-item" key={article.title+i}>
             <h2 className="news-item__title">{article.title}</h2>
             <p className="news-item__source">{article.source.name}</p>
             <a href={article.url} target="_blank" className="news-item__link">read more &rarr;</a>

@@ -15,7 +15,8 @@ const cc = require('cryptocompare')
     return {
       user: store.user,
       history: store.history,
-      coins: store.coinlist
+      coins: store.coinlist,
+      scrollbar: store.scrollbar
     }
   })
 )
@@ -76,7 +77,8 @@ export default class CurrenciesTracked extends React.Component {
   
   render() {
     return (
-      <ul className="currencies-tracked">
+      <div className="currencies-tracked__container">
+      <ul className="currencies-tracked" style={{ marginRight: `-${this.props.scrollbar.width}px` }}>
         {this.state.tiles.map(tile => {
           return tile
         })}
@@ -85,6 +87,7 @@ export default class CurrenciesTracked extends React.Component {
           <Route exact path="/" component={AddMoreButton} />
         </li>
       </ul>
+      </div>
     )
   }
 }
