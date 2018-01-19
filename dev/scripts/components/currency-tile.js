@@ -22,7 +22,7 @@ export default class CurrencyTile extends React.Component {
   getCryptoHistory(e) {
 
     if (window.location.pathname !== '/search' && e.target.className !== 'currencies-tracked__remove-button') {
-      this.props.dispatch(getCryptoHistory('year', this.props.ticker, this.props.user.currency))
+      this.props.dispatch(getCryptoHistory(this.props.user.lastQueried.period, this.props.ticker, this.props.user.currency))
 
       cc.priceFull(this.props.ticker, this.props.user.currency).then(response => {
   
