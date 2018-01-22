@@ -29,36 +29,59 @@ export default class Search extends React.Component {
     this.handleSearchEnter = this.handleSearchEnter.bind(this)
   }
 
+
   getCoins() {
 
+    // Remove the scroll event listener when getCoins fires
+    // This will prevent multiple API calls from bubbling up before previous ones finish
     const search = document.querySelector('.search-module')
     search.removeEventListener('scroll', this.pageLoader)
 
-    const cryptos = this.state.cryptos
-    const page = this.state.page
+    const { cryptos, page } = this.state
+
+    // list is declared as an array of 40 cryptocurrencies
+    // the page the user is on will determine where the list will be sliced out of the total array of cryptocurreny tickers from
+    // eg. page 0 will slice at (0, 40), page 1 at (40, 80), etc.
     const list = cryptos.slice(page * 40, (page + 1) * 40)
-    console.log(list)
+
+    // when the list of 40 cryptocurrencies has been sliced, get the data for each coin to be displayed
     this.props.dispatch(getCoinlistData(list, this.props.user.currency)).then(response => {
-      console.log(response)
 
       let results = this.state.results
 
+      // for each cryptocurrency queried, push that information into the results
       for (let key in response.value) {
         results.push({ [key]: response.value[key] })
       }
 
+      // set the state of results to the previous array plus the new 40 cryptocurrencies
+      // re-attach the scroll event listener for the search container
       this.setState({
-        results
+        results,
+        page: page + 1
       }, () => {
         search.addEventListener('scroll', this.pageLoader)
+        
       })
+
     })
   }
 
-  
+  pageLoader(event) {
+    const { scrollHeight, scrollTop, clientHeight } = event.target
+
+    // check if the user has scrolled to the bottom of the search container
+    // if they have, call getCoins to load the next 40 results
+    if (scrollHeight - scrollTop === clientHeight) {
+      this.getCoins()
+    }
+  }
+
   tiles = () => {
+
     let tiles = []
     const list = this.state.results
+
     for (let i = 0; i < list.length; i++) {
       const ticker = Object.keys(list[i])[0]
       tiles.push(
@@ -70,36 +93,33 @@ export default class Search extends React.Component {
         />)
     }
     return tiles
-  }
 
-  pageLoader(event) {
-    const element = event.target
-    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-      console.log('next page loading')
-      this.setState({
-        page: this.state.page + 1
-      }, () => {
-        this.getCoins()
-      })
-    }
   }
     
   componentDidMount() {
+
     const dbRef = firebase.database().ref(`users/${this.props.user.id}/currency`)
+
+    // check for what the user has set as their native currency, then:
     dbRef.on('value', () => {
+
+      // reset the state in case there are too many results for the API to query
       this.setState({
         cryptos: [],
         page: 0,
         results: []
       }, () => {
+
+        // after state has been reset, get the list of cryptocurrencies available to query
         this.props.dispatch(getCoinlist()).then(() => {
+          // set state on the component to an array of tickers with Object.keys()
           this.setState({
             cryptos: Object.keys(this.props.coinlist.list)
           }, () => {
+            // call getCoins to update the state of [results] to the first 40 coins in the list
             this.getCoins()
           })
         })
-        window.addEventListener('keydown', this.handleSearchEnter)
       })
     })
   }
@@ -115,26 +135,22 @@ export default class Search extends React.Component {
   handleSearchInput(input) {
     const string = new RegExp(input, 'i')
     let list = this.props.coinlist.list
-    let cryptos = Object.keys(this.props.coinlist.list)
+    let tickers = Object.keys(this.props.coinlist.list)
 
-    let newCryptos = []
+    let cryptos = []
 
-    for (let i = 0; i < cryptos.length; i++) {
-      if (string.test(list[cryptos[i]].CoinName) || string.test(list[cryptos[i]].Name)) {
-        newCryptos.push(cryptos[i])
+    for (let i = 0; i < tickers.length; i++) {
+      if (string.test(list[tickers[i]].CoinName) || string.test(list[tickers[i]].Name)) {
+        cryptos.push(tickers[i])
       }
     }  
     
     this.setState({
-      cryptos: newCryptos,
+      cryptos,
       page: 0,
       results: []
     }, () => this.getCoins())
 
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleSearchEnter)
   }
 
   render() {
@@ -149,6 +165,7 @@ export default class Search extends React.Component {
               className="search-module__input"
               type="text"
               placeholder="Hit enter to search by ticker or coin name"
+              onKeyDown={this.handleSearchEnter}
             />
             <ul className="search-module__currencies-list">
               {this.tiles()}

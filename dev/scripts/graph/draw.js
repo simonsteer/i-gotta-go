@@ -24,9 +24,7 @@ const tracker = (event) => {
     scale = Math.max(...allStats) / height,
     markers = []
 
-  let 
-    position,
-    i
+  let position
 
   if (window.innerWidth <= 650) {
     position = event.pageX - canvas.offsetWidth / 2
@@ -34,7 +32,7 @@ const tracker = (event) => {
     position = event.pageX - offsetEl.offsetWidth - canvas.offsetWidth / 2
   }
 
-  for (i = 0; i <= plotPoints; i++) {
+  for (let i = 0; i <= plotPoints; i++) {
     markers[i] = increment * i
   }
 
@@ -54,8 +52,7 @@ const tracker = (event) => {
     nextMarker = markers[Math.floor(p / increment) + 2],
 
     newPosition = p - previousMarker,
-    newRange = nextMarker - previousMarker,
-    multiplier = (newPosition / newRange).toFixed(2),
+    multiplier = (newPosition / increment).toFixed(2),
 
     difference = (allStats[index] - allStats[index - 1]) / scale,
     indexValue = allStats[index - 1] / scale,
@@ -64,7 +61,7 @@ const tracker = (event) => {
       left: `calc(${p}px)`
     },
     moveY = {
-      top: `calc(-${indexValue}px + ${(height + canvas.offsetHeight) / 2}px - ${difference * multiplier}px - 0.25rem)`
+      top: `calc(${(height + canvas.offsetHeight) / 2}px - ${indexValue}px - ${difference * multiplier}px - 0.25rem)`
     }
 
   const

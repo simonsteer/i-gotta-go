@@ -65,14 +65,14 @@ export default class Graph extends React.Component {
   }
 
   componentDidUpdate() {
+
     const { list: history } = this.props.history
     const { theme, currency } = this.props.user
     const dataToPlot = history.map(date => {
       return date.close
     })
-    if (history.length > 0) {
 
-      const canvas = document.querySelector('.graph')
+    if (history.length > 0) {
 
       let drawcolor
       if (theme === 'black') {
@@ -105,16 +105,11 @@ export default class Graph extends React.Component {
         first = increments.slice(n, increments.length)
         second = increments.slice(0, n)
         increments = first.concat(second)
-        console.log(increments)
         break;
       case '3 months':
-        first = increments.slice(n, increments.length)
-        second = increments.slice(0, n)
         increments = increments.slice(9)
         break;
       case '6 months':
-        first = increments.slice(n, increments.length)
-        second = increments.slice(0, n)
         increments = increments.slice(6)
         break;
       case 'year':

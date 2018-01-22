@@ -25,7 +25,7 @@ export default class Info extends React.Component {
     } else if (window.innerWidth > 650 && this.state.isMobile) {
       this.setState({
         isMobile: false,
-        panel: 1
+        panel: this.state.panel === 0 ? 1 : this.state.panel 
       })
     }
   }
@@ -55,15 +55,16 @@ export default class Info extends React.Component {
 
   render() {
     const { isMobile, panel } = this.state
+    const { pathname: path } = window.location
 
     return (
       <div className="currency-info">
         <Route path="/search" component={Search} />
-        {window.location.pathname === '/' && !isMobile ? <Graph /> : null}
-        {window.location.pathname === '/' && isMobile && panel === 0 ? <Graph /> : null}
-        {window.location.pathname === '/' && panel === 1 ? <Portfolio /> : null }
-        {window.location.pathname === '/' && panel === 2 ? <NewsFeed /> : null }
-        {window.location.pathname === '/'
+        {path === '/' && !isMobile ? <Graph /> : null}
+        {path === '/' && isMobile && panel === 0 ? <Graph /> : null}
+        {path === '/' && panel === 1 ? <Portfolio /> : null }
+        {path === '/' && panel === 2 ? <NewsFeed /> : null }
+        {path === '/'
           ?
           <ul className="panel-selector">
             {isMobile
@@ -72,7 +73,7 @@ export default class Info extends React.Component {
                 className={panel === 0 ? 'panel-active' : ''}
                 onClick={() => this.changePanel(0)}>
                 Graph
-            </li>
+              </li>
               :
               null
             }
@@ -80,12 +81,12 @@ export default class Info extends React.Component {
               className={panel === 1 ? 'panel-active' : ''}
               onClick={() => this.changePanel(1)}>
               Portfolio
-          </li>
+            </li>
             <li
               className={panel === 2 ? 'panel-active' : ''}
               onClick={() => this.changePanel(2)}>
               News
-          </li>
+            </li>
           </ul>
           :
           null
