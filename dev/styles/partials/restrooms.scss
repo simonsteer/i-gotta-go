@@ -25,7 +25,7 @@ main {
 li {
   padding: 30px;
   &:nth-of-type(odd) {
-    background: rgb(50, 50, 50);
+    background: lighten($color-bg, 5%);
   }
 }
 
