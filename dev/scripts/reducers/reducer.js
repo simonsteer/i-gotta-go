@@ -2,12 +2,12 @@ const initialState = {}
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_SCROLLBAR_WIDTH':
+    case 'SOME_ACTION':
       return {
         ...state,
-        ...action.payload
+        data: action.payload
       }
-      break
+    default:
+      return state
   }
-  return state
 }

@@ -1,36 +1,34 @@
 const initialState = {
   fetching: false,
   fetched: false,
-  list: [],
+  data: [],
   error: null
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_HISTORY_PENDING': {
+    case 'AXIOS_PENDING': {
       return {
         ...state,
         fetching: true
       }
-      break;
     }
-    case 'GET_HISTORY_REJECTED': {
+    case 'AXIOS_REJECTED': {
       return {
         ...state,
         fetching: false,
         error: action.payload
       }
-      break;
     }
-    case 'GET_HISTORY_FULFILLED': {
+    case 'AXIOS_FULFILLED': {
       return {
         ...state,
         fetching: false,
         fetched: true,
-        list: action.payload
+        data: action.payload
       }
-      break;
     }
+    default:
+      return state
   }
-  return state
 }

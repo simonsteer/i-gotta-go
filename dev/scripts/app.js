@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 import store from './store'
 import { Provider } from 'react-redux';
 
-import CryBaby from './components/cry-baby'
+import Main from './components/main'
 
 ReactDOM.render(
   <Provider store={store}>
-    <CryBaby />
+    <Main />
   </Provider>, document.querySelector('#root'));
