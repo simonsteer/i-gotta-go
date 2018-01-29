@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux'
 
-import basic from './reducer'
-import axios from './axios-reducer'
+import restrooms from './restrooms-reducer'
 
 export default combineReducers({
-  basic,
-  axios
+  restrooms
 })

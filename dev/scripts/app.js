@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 import store from './store'
 import { Provider } from 'react-redux';
 
-import Main from './components/main'
+import IGottaGo from './containers/IGottaGo'
 
 ReactDOM.render(
   <Provider store={store}>
-    <Main />
+    <IGottaGo />
   </Provider>, document.querySelector('#root'));

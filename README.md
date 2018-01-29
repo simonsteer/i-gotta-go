@@ -1,3 +1,3 @@
-# React Redux Boilerplate
+# iGottaGo
 
-A personalized react-redux boilerplate for setting up new react-redux projects. Includes promise, thunk, and logger middleware. Subject to change in the future as my own workflow matures and becomes more defined.
+A web app that uses the refuge api to find the nearest public washrooms
