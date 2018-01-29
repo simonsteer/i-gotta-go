@@ -1,0 +1,38 @@
+main {
+  width: 100%;
+  max-width: 800px;
+  background: $color-bg;
+  margin: 0 auto;
+  h2 {
+    margin: 0 0 10px 0;
+    font-size: 30px;
+    color: $color-main;
+  }
+  p {
+    color: $color-accent;
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+  }
+  a {
+    color: $color-main;
+    text-decoration: underline;
+    letter-spacing: 1px;
+  }
+}
+
+li {
+  padding: 30px;
+  &:nth-of-type(odd) {
+    background: rgb(50, 50, 50);
+  }
+}
+
+.address {
+  font-size: 30px;
+}
+
+.directions {
+  color: rgb(237, 235, 235);
+}

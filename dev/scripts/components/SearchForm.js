@@ -1,22 +1,33 @@
 import React from 'react'
 
-const SearchForm = ({ toggleAda, ada, toggleUnisex, unisex, getRestrooms }) => {
+const SearchForm = ({ address, updateAddress, toggleAda, ada, toggleUnisex, unisex, getRestrooms }) => {
   return (
     <form onSubmit={getRestrooms}>
-      <h2>Do you need...</h2>
-      <h3>...a unisex washroom?</h3>
-      <label htmlFor="unisex-yes">Yes</label>
-      <input type="radio" id="unisex-yes" name="unisex" checked={unisex} onChange={toggleUnisex} />
-      <label htmlFor="unisex-no">No</label>
-      <input type="radio" id="unisex-no" name="unisex" checked={!unisex} onChange={toggleUnisex} />
+      <h3>Closest intersection and city:</h3>
+      <input
+        className="closest-intersection"
+        type="text"
+        value={address}
+        onChange={updateAddress}
+        placeholder="eg. yonge and college toronto"
+      />
+      <h3>Do you need a unisex washroom?</h3>
+      <div>
+        <input type="radio" id="unisex-yes" name="unisex" checked={unisex} onChange={toggleUnisex} />
+        <label htmlFor="unisex-yes">Yes</label>
+        <input type="radio" id="unisex-no" name="unisex" checked={!unisex} onChange={toggleUnisex} />
+        <label htmlFor="unisex-no">No</label>
+      </div>
 
-      <h3>...an ADA accessible washroom?</h3>
-      <label htmlFor="ada-yes">Yes</label>
-      <input type="radio" id="ada-yes" name="ada" checked={ada} onChange={toggleAda} />
-      <label htmlFor="ada-no">No</label>
-      <input type="radio" id="ada-no" name="ada" checked={!ada} onChange={toggleAda} />
+      <h3>Does it need to be ADA accessible?</h3>
+      <div>
+        <input type="radio" id="ada-yes" name="ada" checked={ada} onChange={toggleAda} />
+        <label htmlFor="ada-yes">Yes</label>
+        <input type="radio" id="ada-no" name="ada" checked={!ada} onChange={toggleAda} />
+        <label htmlFor="ada-no">No</label>
+      </div>
 
-      <input type="submit" value="Find Restrooms" />
+      <input className="form__submit-button" type="submit" value="Find Restrooms" />
     </form>
   )
 }

@@ -1,0 +1,70 @@
+form {
+  @include flex-center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  height: calc(100vh - 80px);
+  min-height: 550px;
+  margin: 0 auto;
+  padding: 0 15px 40px 15px;
+  background: $color-bg;
+  text-align: center;
+  div {
+    @include flex-center;
+    width: 100%;
+  }
+}
+
+h3 {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 20px 0;
+}
+
+label {
+  @include flex-center;
+  border-radius: 20px;
+  color: $color-accent;
+  font-size: 20px;
+  font-family: $font-secondary;
+  width: 75px;
+  height: 40px;
+  transition: color 0.3s, background-color 0.3s;
+  &:first-of-type {
+    margin-right: 30px;
+  }
+}
+
+input[type="radio"] {
+  display: none;
+  &:checked + label {
+    background: $color-main;
+    color: $color-bg;
+  }
+}
+
+.form__submit-button {
+  font-size: 20px;
+  font-family: $font-secondary;
+  padding: 0 25px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 40px;
+  background: $color-accent;
+  transition: background-color 0.3s;
+  border: 0;
+  &:hover {
+    background: $color-main;
+  }
+}
+
+.closest-intersection {
+  border: 0;
+  width: 100%;
+  max-width: 350px;
+  padding: 10px;
+  background: $color-accent;
+  color: $color-bg;
+  font-size: 20px;
+  font-family: $font-secondary;
+}

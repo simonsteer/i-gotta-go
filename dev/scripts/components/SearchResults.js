@@ -7,10 +7,9 @@ const SearchResults = ({ restrooms }) => {
         {restrooms.map(rr =>
           <li key={rr.id} id={rr.id}>
             <h2>{rr.name}</h2>
-            <p>{rr.directions}</p>
-            <p>{rr.street}</p>
+            <a href={`https://www.google.ca/maps/place/${rr.street}`} target="_blank">{rr.street}</a><br />
             <p>{(rr.distance * 1609.34).toFixed(0)} meters</p>
-            <a href={`https://www.google.ca/maps/place/${rr.street}`} target="_blank">GoogleMaps</a>
+            <p className="directions">{rr.directions}</p>
           </li>
         )}
       </ul>

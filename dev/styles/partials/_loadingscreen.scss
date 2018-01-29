@@ -1,0 +1,14 @@
+.loading-screen {
+  @include flex-center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  height: calc(100vh - 80px);
+  color: $color-main;
+  background: $color-bg;
+  font-family: $font-secondary;
+  h2 {
+    font-weight: 400;
+    font-size: 45px;
+  }
+}
